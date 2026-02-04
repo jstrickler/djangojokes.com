@@ -87,7 +87,7 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': 'scripts',
         'HOST': 'localhost',
-        'PORT': '5433',
+        # 'PORT': '5433',
         # 'OPTIONS': {
         #     'options': '-c search_path=train1,public'
         # },
