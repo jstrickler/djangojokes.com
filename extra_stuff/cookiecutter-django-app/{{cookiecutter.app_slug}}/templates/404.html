@@ -1,0 +1,8 @@
+{% raw %}{% extends "{% endraw %}{{cookiecutter.app_slug}}/{{cookiecutter.app_slug}}{% raw %}_base.html" %}
+{% block content %}
+<div class="container">
+    <div>{{ exception }}</div>  {# message from exception #}
+    <div>{{ request_path }}</div>  {# url of page that raised exception #}
+</div>
+{% endblock content %}
+{% endraw %}

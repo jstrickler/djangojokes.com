@@ -1,0 +1,17 @@
+{
+    "project_name": "",
+    "project_slug": "{{cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_')}}",
+    "author_name": "",
+    "author_email": "",
+    "rest_project": false,
+    "copyright_year": "2023",
+    "time_zone": "America/New_York",
+    "__prompts__": {
+        "project_name": "Project name (can have spaces and punctuation)",
+        "project_slug": "Project slug (short name, must be valid Python identifier)",
+        "author_name": "Project author's name",
+        "author_email": "Project author's email",
+        "rest_project": "Is this a RESTful API?",
+        "time_zone": "Time zone in standard Area/City format"
+    }
+}
