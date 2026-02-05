@@ -6,7 +6,7 @@ from .models import Joke
 @admin.register(Joke)
 class JokeAdmin(admin.ModelAdmin):
     model = Joke
-    list_display = ['question', 'created', 'updated']
+    list_display = ['question', 'answer', 'rating', 'created', 'updated']
 
     def get_readonly_fields(self, request, obj=None):
         if obj:

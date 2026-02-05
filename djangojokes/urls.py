@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+import debug_toolbar.toolbar
 
 urlpatterns = [
-    path('admin/doc', include('django.contrib.admindocs.urls')),
+    path('__debug__/', include(debug_toolbar.urls)),
+    path('admin/docs/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
     path('jokes/', include('jokes.urls')),
     path('', include('pages.urls')),

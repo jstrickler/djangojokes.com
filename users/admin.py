@@ -8,9 +8,7 @@ CustomUser = get_user_model()
 @admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    add_fieldsets = UserAdmin.add_fieldsets + (
-        ('Optional Fields', {
-            'classes': ('wide',),
-            'fields': ('email', 'first_name', 'last_name', 'favorite_color'),
-        }),
-    )
+    fieldset_list = list(UserAdmin.fieldsets[1][1]['fields'])
+    fieldset_list.append('favorite_color')
+    UserAdmin.fieldsets[1][1]['fields'] = tuple(fieldset_list)
+

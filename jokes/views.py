@@ -15,11 +15,11 @@ class JokeDetailView(DetailView):
 
 class JokeCreateView(CreateView):
     model = Joke
-    fields = ['question', 'answer']
+    fields = ['question', 'answer', 'rating']
 
 class JokeUpdateView(UpdateView):
     model = Joke
-    fields = ['question', 'answer']
+    fields = ['question', 'answer', 'rating']
 
 class JokeDeleteView(DeleteView):
     model = Joke

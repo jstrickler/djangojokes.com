@@ -1,4 +1,5 @@
 {% extends "_base.html" %}
+    
 {% block title %}Joke{% endblock %}
 {% block main %}
 <div class="card border-primary m-auto mb-3 text-center"
@@ -6,13 +7,39 @@ style="max-width: 30rem">
 <div class="card-header">{{ joke.question }}</div>
 <div class="card-body text-primary">
     <h5 class="card-title">{{ joke.answer }}</h5>
-</div>"
+    <button id="speak-btn" class="btn btn-info btn-sm me-2">Hear It</button>
+   
+</div>
 <div class="card-footer">
     <small class="text-muted">
         Created on: {{ joke.created }}<br/>
         Last updated: {{ joke.updated }}<br/>
     </small>
 </div>
-
 </div>
+{% endblock %}
+{% block js %}
+{{  block.super }}
+<script type="text/javascript">
+    if ('speechSynthesis' in window) {
+        const synth = window.speechSynthesis;
+        const speakBtn = document.getElementById('speak-btn');
+    
+        speakBtn.addEventListener('click', () => {
+            var textToSpeak = "{{ joke.question }}";
+            var utterThis = new SpeechSynthesisUtterance(textToSpeak);            
+            // utterThis.volume = 1;
+            utterThis.rate = .8;
+            synth.speak(utterThis);
+            textToSpeak = "{{ joke.answer }}";
+            utterThis = new SpeechSynthesisUtterance(textToSpeak);            
+            // utterThis.volume = 1;
+            utterThis.rate = .8;
+            synth.speak(utterThis);
+    });
+    } else {
+        // Fallback for browsers that do not support the API
+        alert('Text-to-speech is not supported in your browser.');
+    }
+    </script>
 {% endblock %}

@@ -12,7 +12,7 @@ class Joke(models.Model):
     """
     question = models.TextField(max_length=256, help_text="The first part of the joke")
     answer = models.TextField(max_length=100, blank=True, help_text="The second part of the joke")
-    rating = models.IntegerField()
+    rating = models.IntegerField(help_text="Joke rating, from 1 to 10", default=1)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     # riddles = models.ForeignKey('Riddle')
@@ -22,10 +22,17 @@ class Joke(models.Model):
         null=False
     )
 
-    def to_speech(self):
-        pass  # say joke out loud
+    # def to_speech(self):
+    #     """
+    #     Let the user listen to the joke. 
+    #     """
+    #     pass  # say joke out loud
 
     def save(self, *args, **kwargs):
+        """
+        Save record to database. Extends builtin .save() and creates
+        the slug field for a joke. 
+        """
         if not self.slug:
             value = str(self)
             self.slug = unique_slug(value, type(self))  # Joke??
@@ -34,10 +41,15 @@ class Joke(models.Model):
 
     class Meta:
         db_table = 'jokes'
-        ordering = ['question', 'answer']
-        # ordering = ['-updated', 'question', 'answer']
+#        ordering = ['question', 'answer']
+        ordering = ['-updated']
 
     def get_absolute_url(self):
+        """
+        Create a URL using the joke's slug field. 
+
+        :return _type: A string representing the URL for one joke. 
+        """
         return reverse('jokes:detail', args=[str(self.slug)])
 
     def __str__(self):

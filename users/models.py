@@ -3,9 +3,3 @@ from django.db import models
 
 class CustomUser(AbstractUser):
     favorite_color = models.TextField(max_length=32)
-
-
-
-
-
-
