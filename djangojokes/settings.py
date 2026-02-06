@@ -32,6 +32,7 @@ INTERNAL_IPS = ['127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    # Built-in apps
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.auth',
@@ -39,9 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # third-party apps
+    'crispy_forms',
+    'crispy_bootstrap5',
+    # local apps
     'pages.apps.PagesConfig',
     'users.apps.UsersConfig',
     'jokes.apps.JokesConfig',
+    'jobs.apps.JobsConfig',
     'debug_toolbar',
 ]
 
@@ -151,6 +157,10 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
 
 if os.environ.get("ENVIRONMENT") != "production":
     from .local_settings import *

@@ -21,12 +21,6 @@ class Joke(models.Model):
         null=False
     )
 
-    category = models.ForeignKey(
-        'Category', 
-        on_delete=models.PROTECT,
-    )
-                                   
-
     # def to_speech(self):
     #     """
     #     Let the user listen to the joke. 
@@ -59,27 +53,3 @@ class Joke(models.Model):
 
     def __str__(self):
         return self.question
-
-class Category(models.Model):
-    category = models.CharField(max_length=50)
-    slug = models.SlugField(
-        max_length=50, unique=True, null=False, editable=False
-    )
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
-
-    def get_absolute_url(self):
-        return reverse('jokes:category', args=[self.slug])
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            value = str(self)
-            self.slug = unique_slug(value, type(self))
-        super().save(*args, **kwargs)
-
-    class Meta:
-        # verbose_name = "???"  if needed
-        verbose_name_plural = "Categories"
-
-    def __str__(self):
-        return self.category
