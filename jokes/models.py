@@ -1,6 +1,27 @@
 from django.db import models
 from django.urls import reverse
+from django.conf import settings
 from common.utils.text import unique_slug
+
+class Tag(models.Model):
+    tag = models.CharField(max_length=50)
+    slug = models.SlugField(
+        max_length=50, unique=True, null=False, editable=False,
+    )
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def get_absolute_url(self):
+        return reverse('jokes:tags', args=[self.slug])
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            value = str(self)
+            self.slug = unique_slug(value, type(self))
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.tag
 
 # Create your models here.
 class Joke(models.Model):
@@ -24,8 +45,12 @@ class Joke(models.Model):
     category = models.ForeignKey(
         'Category', 
         on_delete=models.PROTECT,
+        related_name="jokes",
     )
-                                   
+
+    tags = models.ManyToManyField(
+        'tag',
+    )                  
 
     # def to_speech(self):
     #     """
@@ -83,3 +108,23 @@ class Category(models.Model):
 
     def __str__(self):
         return self.category
+    
+class JokeVote(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
+        related_name='jokevotes'
+    )
+    joke = models.ForeignKey(
+        Joke, on_delete=models.CASCADE,
+        related_name='jokevotes'
+    )
+    vote = models.SmallIntegerField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['user', 'joke'], name='one_vote_per_user_per_joke'
+            )
+        ]

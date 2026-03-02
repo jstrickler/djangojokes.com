@@ -21,8 +21,10 @@ import debug_toolbar.toolbar
 urlpatterns = [
     path('__debug__/', include(debug_toolbar.urls)),
     path('admin/docs/', include('django.contrib.admindocs.urls')),
+    path('account/', include('allauth.urls')),
     path('admin/', admin.site.urls),
     path('jokes/', include('jokes.urls')),
     path('jobs/', include('jobs.urls')),
+    path('users/', include('users.urls')),
     path('', include('pages.urls')),
 ]

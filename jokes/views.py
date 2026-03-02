@@ -2,6 +2,7 @@ from django.urls import reverse_lazy
 from django.views.generic import (
     ListView, DetailView, CreateView, UpdateView, DeleteView
 )
+from django.contrib.messages.views import SuccessMessageMixin
 
 from .models import Joke
 from .forms import JokeForm
@@ -14,9 +15,10 @@ class JokeListView(ListView):
 class JokeDetailView(DetailView):
     model = Joke
 
-class JokeCreateView(CreateView):
+class JokeCreateView(SuccessMessageMixin, CreateView):
     model = Joke
     form_class = JokeForm
+    success_message = "Joke added"
 
 class JokeUpdateView(UpdateView):
     model = Joke

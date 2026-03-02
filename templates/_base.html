@@ -59,6 +59,16 @@
   </nav>
 </header>
 <main class="m-4 pb-5">
+  {% if messages %}
+  {% for message in messages %}
+      <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+          <strong>{{ message }}</strong>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>    
+      </div>
+  {% endfor %}
+{% endif %}
   {% block main %}<h2>Welcome!</h2>{% endblock %}
 </main>
 <footer class="fixed-bottom bg-light row">
