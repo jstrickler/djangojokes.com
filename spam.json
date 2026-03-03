@@ -1,0 +1,163 @@
+[
+{
+    "model": "jokes.tag",
+    "pk": 1,
+    "fields": {
+        "tag": "crazy",
+        "slug": "crazy",
+        "created": "2026-03-02T12:37:15.519Z",
+        "updated": "2026-03-02T12:37:15.520Z"
+    }
+},
+{
+    "model": "jokes.tag",
+    "pk": 2,
+    "fields": {
+        "tag": "silly",
+        "slug": "silly",
+        "created": "2026-03-02T12:37:15.525Z",
+        "updated": "2026-03-02T12:37:15.525Z"
+    }
+},
+{
+    "model": "jokes.tag",
+    "pk": 3,
+    "fields": {
+        "tag": "animal",
+        "slug": "animal",
+        "created": "2026-03-02T12:37:15.528Z",
+        "updated": "2026-03-02T12:37:15.528Z"
+    }
+},
+{
+    "model": "jokes.joke",
+    "pk": 2,
+    "fields": {
+        "question": "hello",
+        "answer": "goodbye",
+        "created": "2026-03-02T12:01:10.077Z",
+        "updated": "2026-03-02T12:01:10.079Z",
+        "slug": "hello",
+        "category": 1,
+        "tags": [
+            3,
+            1
+        ]
+    }
+},
+{
+    "model": "jokes.joke",
+    "pk": 3,
+    "fields": {
+        "question": "Why did the chicken...",
+        "answer": "to get to the other side",
+        "created": "2026-03-02T12:13:21.919Z",
+        "updated": "2026-03-02T12:14:36.349Z",
+        "slug": "why-did-the-chicken",
+        "category": 2,
+        "tags": []
+    }
+},
+{
+    "model": "jokes.joke",
+    "pk": 4,
+    "fields": {
+        "question": "Why did the chicken...",
+        "answer": "to see the world",
+        "created": "2026-03-02T12:18:15.016Z",
+        "updated": "2026-03-02T12:37:54.501Z",
+        "slug": "why-did-the-chicken-hkzcbwsdeu",
+        "category": 2,
+        "tags": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "jokes.category",
+    "pk": 1,
+    "fields": {
+        "category": "silly",
+        "slug": "silly",
+        "created": "2026-03-02T11:59:38.558Z",
+        "updated": "2026-03-02T11:59:38.559Z"
+    }
+},
+{
+    "model": "jokes.category",
+    "pk": 2,
+    "fields": {
+        "category": "Dad jokes",
+        "slug": "dad-jokes",
+        "created": "2026-03-02T12:12:45.971Z",
+        "updated": "2026-03-02T12:12:45.971Z"
+    }
+},
+{
+    "model": "jokes.jokevote",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "joke": 4,
+        "vote": 1,
+        "created": "2026-03-02T13:36:55.931Z",
+        "updated": "2026-03-02T13:36:55.931Z"
+    }
+},
+{
+    "model": "jokes.jokevote",
+    "pk": 2,
+    "fields": {
+        "user": 1,
+        "joke": 3,
+        "vote": -1,
+        "created": "2026-03-02T13:37:06.234Z",
+        "updated": "2026-03-02T13:37:06.234Z"
+    }
+},
+{
+    "model": "jokes.jokevote",
+    "pk": 3,
+    "fields": {
+        "user": 3,
+        "joke": 2,
+        "vote": -1,
+        "created": "2026-03-02T13:47:27.844Z",
+        "updated": "2026-03-02T13:47:27.844Z"
+    }
+},
+{
+    "model": "jokes.jokevote",
+    "pk": 4,
+    "fields": {
+        "user": 2,
+        "joke": 4,
+        "vote": 1,
+        "created": "2026-03-02T14:59:43.081Z",
+        "updated": "2026-03-02T15:02:38.321Z"
+    }
+},
+{
+    "model": "jokes.jokevote",
+    "pk": 5,
+    "fields": {
+        "user": 2,
+        "joke": 3,
+        "vote": -1,
+        "created": "2026-03-02T15:00:19.230Z",
+        "updated": "2026-03-02T15:02:46.705Z"
+    }
+},
+{
+    "model": "jokes.jokevote",
+    "pk": 6,
+    "fields": {
+        "user": 2,
+        "joke": 2,
+        "vote": 1,
+        "created": "2026-03-02T15:00:25.145Z",
+        "updated": "2026-03-02T15:09:03.430Z"
+    }
+}
+]

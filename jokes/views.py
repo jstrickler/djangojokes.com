@@ -15,6 +15,7 @@ from .forms import JokeForm
 
 class JokeListView(ListView):
     model = Joke
+    paginate_by = 15
 
 class JokeDetailView(DetailView):
     model = Joke
