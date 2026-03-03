@@ -1,0 +1,7 @@
+django-debug-toolbar
+django-filter
+django>=4.0
+djangorestframework
+pytest
+pytest-mock
+PyYAML
