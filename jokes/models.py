@@ -42,6 +42,19 @@ class Joke(models.Model):
         null=False
     )
 
+    @property
+    def num_votes(self):
+        return self.jokevotes.count()
+    
+    @property
+    def num_likes(self):
+        return self.jokevotes.filter(vote=1).count()
+
+    @property
+    def num_dislikes(self):
+        return self.jokevotes.filter(vote=-1).count()
+
+
     category = models.ForeignKey(
         'Category', 
         on_delete=models.PROTECT,
