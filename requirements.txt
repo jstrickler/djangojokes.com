@@ -5,3 +5,7 @@ djangorestframework
 pytest
 pytest-mock
 PyYAML
+celery[redis]
+redis
+drf-spectacular
+djangorestframework-api-key

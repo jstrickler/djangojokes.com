@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'jokes.apps.JokesConfig',
     'jobs.apps.JobsConfig',
+    'api.apps.ApiConfig',
     'debug_toolbar',
 ]
 
